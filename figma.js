@@ -5,10 +5,10 @@ const baseUrl = "https://api.figma.com/v1";
 const personalAccessToken = "Your personal AccesToken";
 const url = process.argv[2];
 
-// create a regex that matches everything after "note-id="
+// regex that matches everything after "note-id="
 const regexNodeId = /node-id=(.*)/;
 
-// create a regex that matches everything after "file/" until "/"
+// regex that matches everything after "file/" until "/"
 const regexFileKey = /file\/(.*)\//;
 
 const getNodeId = (url) => {
@@ -79,13 +79,11 @@ const downloadImage = async (iconName) => {
   });
 };
 
-// create function that gets svg data from a file
 const getSvgData = async () => {
   const iconName = await getNodeName(getNodeId(url));
 
   await downloadImage(iconName);
   const svgData = await fs.readFileSync(`${iconName}.svg`, "utf8");
-  // console.log(svgData);
 
   // regex that replaces <svg with <SvgIcon
   const regexSvgIcon = /<svg/g;
