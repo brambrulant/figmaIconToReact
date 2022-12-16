@@ -12,6 +12,8 @@ To make this work you'll need a Personal Access Token of Figma.
 - A token will be generated. This will be your only chance to copy the token, so make sure you keep a copy of this in a secure place.
 - Paste this code in the personalAccessToken variable
 
-execute: node figma.js {figma node url}
+execute: node figma.js {figma node url} {fileName}
+
+if no filename is given, the icon name of Figma will be used
 
 example of figma node url: https://www.figma.com/file/1/Illustrations\?node-id\=2
