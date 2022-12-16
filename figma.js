@@ -2,13 +2,14 @@ const axios = require("axios").default;
 const fs = require("fs");
 
 const baseUrl = "https://api.figma.com/v1";
-const personalAccessToken = "Your personal AccesToken";
+const personalAccessToken = "figd_JJNLyyQLD9jPmz0wZRinliCRNxjfrvIp2xQlfB-H";
 const url = process.argv[2];
+const fileName = process.argv[3];
 
-// regex that matches everything after "note-id="
+// create a regex that matches everything after "note-id="
 const regexNodeId = /node-id=(.*)/;
 
-// regex that matches everything after "file/" until "/"
+// create a regex that matches everything after "file/" until "/"
 const regexFileKey = /file\/(.*)\//;
 
 const getNodeId = (url) => {
@@ -79,6 +80,7 @@ const downloadImage = async (iconName) => {
   });
 };
 
+// create function that gets svg data from a file
 const getSvgData = async () => {
   const iconName = await getNodeName(getNodeId(url));
 
@@ -102,9 +104,10 @@ const getSvgData = async () => {
 
 const createReactComponent = async () => {
   const svgData = await getSvgData();
-  const iconName = await getNodeName(getNodeId(url));
+  let iconName
+  fileName ? iconName = fileName : iconName = await getNodeName(getNodeId(url));
 
-  const tsxFile = `import React from "react"
+  const tsxFile = `import React from "react";
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 
 const ${iconName}: React.FC<Exclude<SvgIconProps, 'viewBox'>> = (props) => (
