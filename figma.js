@@ -104,7 +104,7 @@ const createReactComponent = async () => {
   const svgData = await getSvgData();
   const iconName = await getNodeName(getNodeId(url));
 
-  const tsxFile = `import React from "react";
+  const tsxFile = `import React from "react"
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 
 const ${iconName}: React.FC<Exclude<SvgIconProps, 'viewBox'>> = (props) => (
