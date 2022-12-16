@@ -2,7 +2,7 @@ const axios = require("axios").default;
 const fs = require("fs");
 
 const baseUrl = "https://api.figma.com/v1";
-const personalAccessToken = "figd_2mGTTqcfqeUDEznp5X9iF10cuuVkUBbcjAgLlwwz";
+const personalAccessToken = "Your personal AccesToken";
 const url = process.argv[2];
 
 // create a regex that matches everything after "note-id="
